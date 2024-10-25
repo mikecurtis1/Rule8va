@@ -77,7 +77,8 @@ const buildProgression = function() {
 	for (let i = 0; i < 8; i++) {
 		let next = selectRandom(bass);
 		let prev = measures[measures.length-1];
-		while ( ( Math.abs(Number(next) - Number(prev)) > 2 ) || ( next === prev ) || ( isTritone(next, prev) === true ) ) {
+		let size = 3 // maximum size of the bass movement in steps, this number +1 is the interval size
+		while ( ( Math.abs(Number(next) - Number(prev)) > size ) || ( next === prev ) || ( isTritone(next, prev) === true ) ) {
 			next = selectRandom(bass);
 		};
 		measures.push(next);
