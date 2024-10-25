@@ -1,6 +1,5 @@
 function load() {
-	//let melody = expressABC(buildMelody());
-	let progression = expressABC(buildProgression());
+	let progression = expressABC(buildBass());
 	let abc = '';
 	abc += 'M: 4/4' + "\n";
 	abc += 'L:1/1' + "\n";
