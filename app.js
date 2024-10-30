@@ -1,15 +1,20 @@
 function load() {
-	let progression = expressABC(buildBass());
+	let progression = applyFiguredBass(buildBass());
 	let abc = '';
-	abc += 'M: 4/4' + "\n";
-	abc += 'L:1/1' + "\n";
-	abc += 'K:C' + "\n";
+	abc += '%%MIDI program 49' + "\n";
 	abc += 'V: 1 clef=bass' + "\n";
+	abc += 'M: 4/4' + "\n";
+	abc += 'L:1' + "\n";
+	abc += 'K:C' + "\n";
 	abc += progression + "\n";
+	let domain = 'https://editor.drawthedots.com/?t=';
+	let url = domain + encodeURIComponent(abc);
 	ABCJS.renderAbc("paper", abc);
 	divABC.innerHTML = '';
 	divABC.insertAdjacentHTML("beforeend", abc);
+	drawthedots.href = url;
 };
 const buildButton = document.getElementById('build');
 const divABC = document.getElementById('abc');
+const drawthedots = document.getElementById('drawthedots');
 buildButton.addEventListener('click', load);
